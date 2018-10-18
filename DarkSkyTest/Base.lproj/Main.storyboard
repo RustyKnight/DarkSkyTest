@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,17 +38,42 @@
                                     <constraint firstItem="LLz-3I-AtI" firstAttribute="leading" secondItem="Inj-VE-iqJ" secondAttribute="leading" id="qzY-7q-K1Z"/>
                                 </constraints>
                             </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJy-qb-o96">
+                                <rect key="frame" x="0.0" y="441.5" width="375" height="200"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ps-ut-CjL" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="WeatherGraphView"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7Ps-ut-CjL" firstAttribute="top" secondItem="QJy-qb-o96" secondAttribute="top" id="66B-5M-S75"/>
+                                    <constraint firstAttribute="bottom" secondItem="7Ps-ut-CjL" secondAttribute="bottom" id="Jha-5m-ZNN"/>
+                                    <constraint firstAttribute="height" constant="200" id="KKQ-cP-Q5z"/>
+                                    <constraint firstAttribute="height" secondItem="7Ps-ut-CjL" secondAttribute="height" id="WfP-kt-4Pj"/>
+                                    <constraint firstItem="7Ps-ut-CjL" firstAttribute="leading" secondItem="QJy-qb-o96" secondAttribute="leading" id="YCJ-CY-JwV"/>
+                                    <constraint firstItem="7Ps-ut-CjL" firstAttribute="width" secondItem="QJy-qb-o96" secondAttribute="width" priority="999" id="ctx-16-v0V"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Ps-ut-CjL" secondAttribute="trailing" id="e4L-EH-YrF"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Inj-VE-iqJ" secondAttribute="trailing" id="Rlm-gY-1ee"/>
+                            <constraint firstItem="QJy-qb-o96" firstAttribute="top" secondItem="Inj-VE-iqJ" secondAttribute="bottom" constant="8" id="SZJ-5l-WGt"/>
                             <constraint firstItem="Inj-VE-iqJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Y0j-VG-6hW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QJy-qb-o96" secondAttribute="trailing" id="dRJ-GE-Zjm"/>
+                            <constraint firstItem="QJy-qb-o96" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hSn-ge-cqY"/>
                             <constraint firstItem="Inj-VE-iqJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yyH-If-xo0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="nibView" destination="LLz-3I-AtI" id="Hif-Es-9Nc"/>
+                        <outlet property="weatherGraphViewNib" destination="7Ps-ut-CjL" id="3zX-4T-xPa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

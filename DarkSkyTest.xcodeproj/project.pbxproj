@@ -26,6 +26,12 @@
 		12A9657D2176E7B5003754A8 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12A965792176E7B5003754A8 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		703201EB217728DA00339737 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703201EA217728DA00339737 /* Alamofire.framework */; };
 		703201EC217728DA00339737 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 703201EA217728DA00339737 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		70B8EE7B21786C3F003CCCBC /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70B8EE7A21786C3F003CCCBC /* HeaderView.xib */; };
+		70B8EE7E21787303003CCCBC /* WeatherStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B8EE7D21787303003CCCBC /* WeatherStyleKit.swift */; };
+		70B8EE8021787318003CCCBC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B8EE7F21787318003CCCBC /* HeaderView.swift */; };
+		70B8EE8221787BCA003CCCBC /* WeatherGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 70B8EE8121787BCA003CCCBC /* WeatherGraphView.xib */; };
+		70B8EE8421788044003CCCBC /* WeatherGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B8EE8321788044003CCCBC /* WeatherGraphView.swift */; };
+		70B8EE8721788C0F003CCCBC /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B8EE8621788C0F003CCCBC /* UIView+Border.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +90,12 @@
 		12A965782176E7B4003754A8 /* SwiftSky.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSky.framework; path = Carthage/Build/iOS/SwiftSky.framework; sourceTree = "<group>"; };
 		12A965792176E7B5003754A8 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		703201EA217728DA00339737 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		70B8EE7A21786C3F003CCCBC /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		70B8EE7D21787303003CCCBC /* WeatherStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherStyleKit.swift; sourceTree = "<group>"; };
+		70B8EE7F21787318003CCCBC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		70B8EE8121787BCA003CCCBC /* WeatherGraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherGraphView.xib; sourceTree = "<group>"; };
+		70B8EE8321788044003CCCBC /* WeatherGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherGraphView.swift; sourceTree = "<group>"; };
+		70B8EE8621788C0F003CCCBC /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,16 +154,22 @@
 		12A965492176E308003754A8 /* DarkSkyTest */ = {
 			isa = PBXGroup;
 			children = (
+				70B8EE8521788BFB003CCCBC /* Extensions */,
 				12A9654A2176E308003754A8 /* AppDelegate.swift */,
 				12A965512176E309003754A8 /* Assets.xcassets */,
+				70B8EE7F21787318003CCCBC /* HeaderView.swift */,
+				70B8EE7A21786C3F003CCCBC /* HeaderView.xib */,
 				12A965562176E309003754A8 /* Info.plist */,
 				12A965532176E309003754A8 /* LaunchScreen.storyboard */,
 				12A9654E2176E308003754A8 /* Main.storyboard */,
 				123854342178348D00D88E2F /* Model.swift */,
+				70B8EE7C21787303003CCCBC /* StyleKit */,
 				1238542F2178017400D88E2F /* TempatureGraphView.swift */,
 				1209E84E2178451200674D82 /* TempatureGraphView.xib */,
 				12A9654C2176E308003754A8 /* ViewController.swift */,
 				1209E850217849F500674D82 /* XibView.swift */,
+				70B8EE8121787BCA003CCCBC /* WeatherGraphView.xib */,
+				70B8EE8321788044003CCCBC /* WeatherGraphView.swift */,
 			);
 			path = DarkSkyTest;
 			sourceTree = "<group>";
@@ -172,6 +190,22 @@
 				12A9656C2176E309003754A8 /* Info.plist */,
 			);
 			path = DarkSkyTestUITests;
+			sourceTree = "<group>";
+		};
+		70B8EE7C21787303003CCCBC /* StyleKit */ = {
+			isa = PBXGroup;
+			children = (
+				70B8EE7D21787303003CCCBC /* WeatherStyleKit.swift */,
+			);
+			path = StyleKit;
+			sourceTree = "<group>";
+		};
+		70B8EE8521788BFB003CCCBC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				70B8EE8621788C0F003CCCBC /* UIView+Border.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,8 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				12A965552176E309003754A8 /* LaunchScreen.storyboard in Resources */,
+				70B8EE7B21786C3F003CCCBC /* HeaderView.xib in Resources */,
 				12A965522176E309003754A8 /* Assets.xcassets in Resources */,
 				12A965502176E308003754A8 /* Main.storyboard in Resources */,
+				70B8EE8221787BCA003CCCBC /* WeatherGraphView.xib in Resources */,
 				1209E84F2178451200674D82 /* TempatureGraphView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,9 +345,13 @@
 			files = (
 				123854302178017400D88E2F /* TempatureGraphView.swift in Sources */,
 				12A9654D2176E308003754A8 /* ViewController.swift in Sources */,
+				70B8EE8721788C0F003CCCBC /* UIView+Border.swift in Sources */,
 				12A9654B2176E308003754A8 /* AppDelegate.swift in Sources */,
 				1209E851217849F500674D82 /* XibView.swift in Sources */,
 				123854352178348D00D88E2F /* Model.swift in Sources */,
+				70B8EE7E21787303003CCCBC /* WeatherStyleKit.swift in Sources */,
+				70B8EE8421788044003CCCBC /* WeatherGraphView.swift in Sources */,
+				70B8EE8021787318003CCCBC /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 337Z8P6WA4;
+				DEVELOPMENT_TEAM = YWXH886EY3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -509,7 +549,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 337Z8P6WA4;
+				DEVELOPMENT_TEAM = YWXH886EY3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

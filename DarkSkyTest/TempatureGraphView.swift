@@ -9,36 +9,8 @@
 import UIKit
 import SwiftSky
 
+@IBDesignable
 class TempatureGraphView: UIView {
-	
-	@IBOutlet weak var rainBar01: UIView!
-	@IBOutlet weak var rainBar02: UIView!
-	@IBOutlet weak var rainBar03: UIView!
-	@IBOutlet weak var rainBar04: UIView!
-	@IBOutlet weak var rainBar05: UIView!
-	@IBOutlet weak var rainBar06: UIView!
-	@IBOutlet weak var rainBar07: UIView!
-	@IBOutlet weak var rainBar08: UIView!
-	@IBOutlet weak var rainBar09: UIView!
-	@IBOutlet weak var rainBar10: UIView!
-	@IBOutlet weak var rainBar11: UIView!
-	@IBOutlet weak var rainBar12: UIView!
-	
-	@IBOutlet weak var rainBar01Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar02Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar03Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar04Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar05Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar06Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar07Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar08Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar09Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar10Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar11Constraint: NSLayoutConstraint!
-	@IBOutlet weak var rainBar12Constraint: NSLayoutConstraint!
-
-	var rainBars: [UIView] = []
-	var rainBarConstraints: [NSLayoutConstraint] = []
 
 	var model: Model = Model(dataPoints: []) {
 		didSet {
@@ -57,35 +29,6 @@ class TempatureGraphView: UIView {
 	}
 	
 	func setUp() {
-		rainBars.append(rainBar01)
-		rainBars.append(rainBar02)
-		rainBars.append(rainBar03)
-		rainBars.append(rainBar04)
-		rainBars.append(rainBar05)
-		rainBars.append(rainBar06)
-		rainBars.append(rainBar07)
-		rainBars.append(rainBar08)
-		rainBars.append(rainBar09)
-		rainBars.append(rainBar10)
-		rainBars.append(rainBar11)
-		rainBars.append(rainBar12)
-
-		rainBarConstraints.append(rainBar01Constraint)
-		rainBarConstraints.append(rainBar02Constraint)
-		rainBarConstraints.append(rainBar03Constraint)
-		rainBarConstraints.append(rainBar04Constraint)
-		rainBarConstraints.append(rainBar05Constraint)
-		rainBarConstraints.append(rainBar06Constraint)
-		rainBarConstraints.append(rainBar07Constraint)
-		rainBarConstraints.append(rainBar08Constraint)
-		rainBarConstraints.append(rainBar09Constraint)
-		rainBarConstraints.append(rainBar10Constraint)
-		rainBarConstraints.append(rainBar11Constraint)
-		rainBarConstraints.append(rainBar12Constraint)
-
-		for rainBar in rainBars {
-			prepare(rainBar: rainBar)
-		}
 	}
 	
 	func prepare(rainBar: UIView) {
@@ -126,12 +69,6 @@ class TempatureGraphView: UIView {
 		guard model.weather.count > 0 else {
 			print("No points for you")
 			return
-		}
-		
-		for index in 0..<model.weather.count {
-			let forecast = model.weather[index]
-//			let constraint = rainBarConstraints[index]
-//			constraint.changeMultiplier(multiplier: CGFloat(forecast.chanceOfRain))
 		}
 
 		var points: [CGPoint] = []

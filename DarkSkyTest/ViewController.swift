@@ -19,7 +19,11 @@ class ViewController: UIViewController {
 	var graphView: TempatureGraphView {
 		return nibView.contentView as! TempatureGraphView
 	}
-	
+	@IBOutlet weak var weatherGraphViewNib: XibView!
+	var weatherGraphView: WeatherGraphView {
+		return weatherGraphViewNib.contentView as! WeatherGraphView
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -137,6 +141,7 @@ class ViewController: UIViewController {
 		let model = Model(dataPoints: dataSet)
 		print("Load model")
 		graphView.model = model
+		weatherGraphView.model = model
 	}
 
 	func filter(_ forecast: Forecast) -> [DataPoint] {
