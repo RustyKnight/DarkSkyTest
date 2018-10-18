@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1209E84F2178451200674D82 /* TempatureGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1209E84E2178451200674D82 /* TempatureGraphView.xib */; };
+		1209E851217849F500674D82 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1209E850217849F500674D82 /* XibView.swift */; };
+		123854302178017400D88E2F /* TempatureGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1238542F2178017400D88E2F /* TempatureGraphView.swift */; };
+		1238543221780C9C00D88E2F /* SwiftDate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1238543121780C9B00D88E2F /* SwiftDate.framework */; };
+		1238543321780C9C00D88E2F /* SwiftDate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1238543121780C9B00D88E2F /* SwiftDate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		123854352178348D00D88E2F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123854342178348D00D88E2F /* Model.swift */; };
 		12A9654B2176E308003754A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A9654A2176E308003754A8 /* AppDelegate.swift */; };
 		12A9654D2176E308003754A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A9654C2176E308003754A8 /* ViewController.swift */; };
 		12A965502176E308003754A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A9654E2176E308003754A8 /* Main.storyboard */; };
@@ -48,6 +54,7 @@
 			files = (
 				12A9657B2176E7B5003754A8 /* SwiftSky.framework in Embed Frameworks */,
 				703201EC217728DA00339737 /* Alamofire.framework in Embed Frameworks */,
+				1238543321780C9C00D88E2F /* SwiftDate.framework in Embed Frameworks */,
 				12A9657D2176E7B5003754A8 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -56,6 +63,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1209E84E2178451200674D82 /* TempatureGraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TempatureGraphView.xib; sourceTree = "<group>"; };
+		1209E850217849F500674D82 /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		1238542F2178017400D88E2F /* TempatureGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempatureGraphView.swift; sourceTree = "<group>"; };
+		1238543121780C9B00D88E2F /* SwiftDate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftDate.framework; path = Carthage/Build/iOS/SwiftDate.framework; sourceTree = "<group>"; };
+		123854342178348D00D88E2F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		12A965472176E308003754A8 /* DarkSkyTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkSkyTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12A9654A2176E308003754A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12A9654C2176E308003754A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +93,7 @@
 			files = (
 				12A9657A2176E7B5003754A8 /* SwiftSky.framework in Frameworks */,
 				703201EB217728DA00339737 /* Alamofire.framework in Frameworks */,
+				1238543221780C9C00D88E2F /* SwiftDate.framework in Frameworks */,
 				12A9657C2176E7B5003754A8 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +118,7 @@
 		12A9653E2176E308003754A8 = {
 			isa = PBXGroup;
 			children = (
+				1238543121780C9B00D88E2F /* SwiftDate.framework */,
 				703201EA217728DA00339737 /* Alamofire.framework */,
 				12A965792176E7B5003754A8 /* Charts.framework */,
 				12A965782176E7B4003754A8 /* SwiftSky.framework */,
@@ -129,11 +143,15 @@
 			isa = PBXGroup;
 			children = (
 				12A9654A2176E308003754A8 /* AppDelegate.swift */,
-				12A9654C2176E308003754A8 /* ViewController.swift */,
-				12A9654E2176E308003754A8 /* Main.storyboard */,
 				12A965512176E309003754A8 /* Assets.xcassets */,
-				12A965532176E309003754A8 /* LaunchScreen.storyboard */,
 				12A965562176E309003754A8 /* Info.plist */,
+				12A965532176E309003754A8 /* LaunchScreen.storyboard */,
+				12A9654E2176E308003754A8 /* Main.storyboard */,
+				123854342178348D00D88E2F /* Model.swift */,
+				1238542F2178017400D88E2F /* TempatureGraphView.swift */,
+				1209E84E2178451200674D82 /* TempatureGraphView.xib */,
+				12A9654C2176E308003754A8 /* ViewController.swift */,
+				1209E850217849F500674D82 /* XibView.swift */,
 			);
 			path = DarkSkyTest;
 			sourceTree = "<group>";
@@ -264,6 +282,7 @@
 				12A965552176E309003754A8 /* LaunchScreen.storyboard in Resources */,
 				12A965522176E309003754A8 /* Assets.xcassets in Resources */,
 				12A965502176E308003754A8 /* Main.storyboard in Resources */,
+				1209E84F2178451200674D82 /* TempatureGraphView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,8 +307,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123854302178017400D88E2F /* TempatureGraphView.swift in Sources */,
 				12A9654D2176E308003754A8 /* ViewController.swift in Sources */,
 				12A9654B2176E308003754A8 /* AppDelegate.swift in Sources */,
+				1209E851217849F500674D82 /* XibView.swift in Sources */,
+				123854352178348D00D88E2F /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YWXH886EY3;
+				DEVELOPMENT_TEAM = 337Z8P6WA4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -487,7 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YWXH886EY3;
+				DEVELOPMENT_TEAM = 337Z8P6WA4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
