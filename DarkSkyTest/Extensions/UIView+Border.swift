@@ -21,6 +21,7 @@ extension UIView {
 		@discardableResult
 		func addBorder(formats: String...) -> UIView {
 			let border = UIView(frame: .zero)
+			border.isOpaque = false
 			border.backgroundColor = color
 			border.translatesAutoresizingMaskIntoConstraints = false
 			addSubview(border)

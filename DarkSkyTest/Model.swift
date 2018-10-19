@@ -12,6 +12,10 @@ import SwiftSky
 struct Weather {
 	fileprivate let dataPoint: DataPoint
 	
+	var description: String {
+		return dataPoint.summary!
+	}
+	
 	var date: Date {
 		return dataPoint.time
 	}
@@ -39,15 +43,40 @@ struct Weather {
 	var windDirection: Int {
 		return dataPoint.wind!.bearing!.degrees
 	}
+	
+	var uvIndex: Int {
+		return dataPoint.uvIndex!
+	}
+	
+	var visibility: Double {
+		return dataPoint.visibility!.value
+	}
+	
+	var icon: String {
+		return dataPoint.icon!
+	}
+	
+	var min: Double {
+		return dataPoint.temperature!.min!.value
+	}
+
+	var max: Double {
+		return dataPoint.temperature!.max!.value
+	}
 }
 
 class Model {
 	let weather: [Weather]
+	let current: Weather
+	let today: Weather
 	
-	var min: Double
-	var max: Double
+	let min: Double
+	let max: Double
 	
-	init(dataPoints: [DataPoint]) {
+	init(current: DataPoint, today: DataPoint, dataPoints: [DataPoint]) {
+		self.current = Weather(dataPoint: current)
+		self.today = Weather(dataPoint: today)
+		
 		var items: [Weather] = []
 		for dp in dataPoints {
 			items.append(Weather(dataPoint: dp))

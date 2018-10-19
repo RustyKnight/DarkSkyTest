@@ -15,13 +15,20 @@ class ViewController: UIViewController {
 
 //	@IBOutlet weak var chartView: LineChartView!
 	
-	@IBOutlet weak var nibView: XibView!
-	var graphView: TempatureGraphView {
-		return nibView.contentView as! TempatureGraphView
-	}
 	@IBOutlet weak var weatherGraphViewNib: XibView!
 	var weatherGraphView: WeatherGraphView {
 		return weatherGraphViewNib.contentView as! WeatherGraphView
+	}
+	
+	var todaysWeatherViewController: TodaysWeatherViewController!
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "Current" {
+			guard let vc = segue.destination as? TodaysWeatherViewController else {
+				return
+			}
+			todaysWeatherViewController = vc
+		}
 	}
 
 	override func viewDidLoad() {
@@ -46,10 +53,13 @@ class ViewController: UIViewController {
 
 		//https://www.google.com/maps/place/Beam+Communications/@-37.920416,145.1466803,17z/data=!3m1!4b1!4m5!3m4!1s0x6ad6153a83379e53:0xe26e5d3612a942eb!8m2!3d-37.920416!4d145.148869
 
-		SwiftSky.get([.current, .hours, .alerts], at: "-37.920416,145.1466803") { (result) in
+		SwiftSky.get([.current, .hours, .alerts, .days], at: "-37.920416,145.1466803") { (result) in
 			switch result {
 			case .success(let forecast):
-				self.load(self.filter(forecast))
+				
+				self.load(current: forecast.current!,
+									today: forecast.days!.points[0],
+									forecasts: self.filter(forecast))
 			case .failure(let error):
 				print(error)
 			}
@@ -137,11 +147,11 @@ class ViewController: UIViewController {
 //		chartView.setScaleEnabled(false)
 	}
 	
-	func load(_ dataSet: [DataPoint]) {
-		let model = Model(dataPoints: dataSet)
+	func load(current: DataPoint, today: DataPoint, forecasts dataSet: [DataPoint]) {
+		let model = Model(current: current, today: today, dataPoints: dataSet)
 		print("Load model")
-		graphView.model = model
 		weatherGraphView.model = model
+		todaysWeatherViewController.model = model
 	}
 
 	func filter(_ forecast: Forecast) -> [DataPoint] {

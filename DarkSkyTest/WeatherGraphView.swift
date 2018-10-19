@@ -25,13 +25,15 @@ class WeatherGraphView: UIView {
 	@IBOutlet weak var nib12: XibView!
 	
 	var headerNibs: [XibView] = []
+	
+	@IBOutlet var frames: [UIView]!
 
 	@IBOutlet weak var nibTempatureGraphView: XibView!
 	var tempatureGraphView: TempatureGraphView {
 		return nibTempatureGraphView.contentView as! TempatureGraphView
 	}
 	
-	var model: Model = Model(dataPoints: []) {
+	var model: Model? {
 		didSet {
 			tempatureGraphView.model = model
 			loadModel()
@@ -67,9 +69,10 @@ class WeatherGraphView: UIView {
 	}
 	
 	func setUp() {
-		for view in headerNibs {
-			let header = self.header(forNib: view)
-			header.addBorders(edges: [.right], color: UIColor.darkGray)
+		let color = UIColor(red: 0, green: 0, blue: 0, alpha: 0.05)
+		for view in frames {
+			view.backgroundColor = UIColor.clear
+			view.addBorders(edges: [.right], color: color)
 		}
 	}
 	
@@ -82,6 +85,9 @@ class WeatherGraphView: UIView {
 	}
 	
 	func loadModel() {
+		guard let model = model else {
+			return
+		}
 		for index in 0..<model.weather.count {
 			let header = self.header(at: index)
 			let weather = model.weather[index]

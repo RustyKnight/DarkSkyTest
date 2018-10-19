@@ -9,10 +9,27 @@
 import UIKit
 import SwiftSky
 
+struct PointOfInterest {
+	var weather: Weather
+	var point: CGPoint
+	
+	static var measureFormatter: MeasurementFormatter = {
+		let formatter = MeasurementFormatter()
+		formatter.numberFormatter.maximumFractionDigits = 2
+		
+		return formatter
+	}()
+	
+	var label: String {
+		let measure = Measurement(value: weather.forecastTempature, unit: UnitTemperature.celsius)
+		return PointOfInterest.measureFormatter.string(from: measure)
+	}
+}
+
 @IBDesignable
 class TempatureGraphView: UIView {
 
-	var model: Model = Model(dataPoints: []) {
+	var model: Model? {
 		didSet {
 			loadModel()
 		}
@@ -48,37 +65,65 @@ class TempatureGraphView: UIView {
 	
 	var forecastPath: UIBezierPath = UIBezierPath()
 	var forecastFillPath: UIBezierPath = UIBezierPath()
+	var pointsOfInterest: [PointOfInterest] = []
+//	var apparentPath: UIBezierPath = UIBezierPath()
 
 	func loadModel() {
-		let min = model.min - 5
-		let max = model.max + 5
+		guard let model = model else {
+			forecastPath = UIBezierPath()
+			forecastFillPath = UIBezierPath()
+			pointsOfInterest = []
+			return
+		}
 		
-		let range = CGFloat(max - min)
-
-		let height = frame.size.height
-		let width = frame.size.width
+		let min = CGFloat(model.min - 5)
+		let max = CGFloat(model.max + 5)
 		
-		let linePath = UIBezierPath()
-		let fillPath = UIBezierPath()
+		let range = max - min
 		
 		defer {
-			forecastPath = linePath
-			forecastFillPath = fillPath
 			setNeedsDisplay()
 		}
 		guard model.weather.count > 0 else {
 			print("No points for you")
+			forecastPath = UIBezierPath()
+			forecastFillPath = UIBezierPath()
+			pointsOfInterest = []
+//			apparentPath = UIBezierPath()
 			return
 		}
+		
+		buildForecastPath(model: model, minRange: min, maxRange: max)
+//		buildFellsLikePath(minRange: min, maxRange: max)
+	}
+	
+	func buildForecastPath(model: Model, minRange min: CGFloat, maxRange max: CGFloat) {
+		let linePath = UIBezierPath()
+		let fillPath = UIBezierPath()
 
+		let height = frame.size.height
+		let width = frame.size.width
+
+		let range = max - min
+
+		defer {
+			forecastPath = linePath
+			forecastFillPath = fillPath
+		}
+		
+		pointsOfInterest = []
+		
 		var points: [CGPoint] = []
 		var xPoint: CGFloat = pointHorizontalGap / 2
 		for forecast in model.weather {
-			let temp = CGFloat(forecast.forecastTempature - min)
+			let temp = CGFloat(forecast.forecastTempature) - min
 			let yPoint = height - ((temp / range) * height)
 			
-			points.append(CGPoint(x: xPoint, y: yPoint))
+			let point = CGPoint(x: xPoint, y: yPoint)
+			points.append(point)
 			xPoint += pointHorizontalGap
+			
+			pointsOfInterest.append(PointOfInterest(weather: forecast, point: point))
 		}
 		
 		let first = points.first!
@@ -86,8 +131,6 @@ class TempatureGraphView: UIView {
 		
 		points.insert(CGPoint(x: 0, y: first.y), at: 0)
 		points.insert(CGPoint(x: width, y: last.y), at: points.count)
-
-		print("Rendering \(points.count) points")
 		
 		var p1 = points.first!
 		linePath.move(to: p1)
@@ -101,19 +144,65 @@ class TempatureGraphView: UIView {
 			
 			let cp1 = controlPointBetween(midPoint, and: p1)
 			let cp2 = controlPointBetween(midPoint, and: p2)
-
+			
 			linePath.addQuadCurve(to: midPoint, controlPoint: cp1)
 			linePath.addQuadCurve(to: p2, controlPoint: cp2)
 			
 			fillPath.addQuadCurve(to: midPoint, controlPoint: cp1)
 			fillPath.addQuadCurve(to: p2, controlPoint: cp2)
-
+			
 			p1 = p2
 		}
 		
 		fillPath.addLine(to: CGPoint(x: p1.x, y: height))
 		fillPath.close()
 	}
+	
+//	func buildFellsLikePath(minRange min: CGFloat, maxRange max: CGFloat) {
+//		let linePath = UIBezierPath()
+//
+//		let height = frame.size.height
+//		let width = frame.size.width
+//
+//		let range = max - min
+//
+//		defer {
+//			apparentPath = linePath
+//		}
+//
+//		var points: [CGPoint] = []
+//		var xPoint: CGFloat = pointHorizontalGap / 2
+//		for forecast in model.weather {
+//			let temp = CGFloat(forecast.apparentTempature) - min
+//			let yPoint = height - ((temp / range) * height)
+//
+//			points.append(CGPoint(x: xPoint, y: yPoint))
+//			xPoint += pointHorizontalGap
+//		}
+//
+//		let first = points.first!
+//		let last = points.last!
+//
+//		points.insert(CGPoint(x: 0, y: first.y), at: 0)
+//		points.insert(CGPoint(x: width, y: last.y), at: points.count)
+//
+//		var p1 = points.first!
+//		linePath.move(to: p1)
+//
+//		for index in 1..<points.count {
+//			let p2 = points[index]
+//			let midPoint = midPointBetween(p1, and: p2)
+//
+//			let cp1 = controlPointBetween(midPoint, and: p1)
+//			let cp2 = controlPointBetween(midPoint, and: p2)
+//
+//			linePath.addQuadCurve(to: midPoint, controlPoint: cp1)
+//			linePath.addQuadCurve(to: p2, controlPoint: cp2)
+//
+//			p1 = p2
+//		}
+//	}
+
 	
 	func midPointBetween(_ p1: CGPoint, and p2: CGPoint) -> CGPoint {
 		return CGPoint(x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
@@ -153,8 +242,55 @@ class TempatureGraphView: UIView {
 			forecastFillPath.fill()
 		}
 		
-		UIColor.blue.set()
+		UIColor.black.set()
 		forecastPath.stroke()
+		
+//		let dashes: [CGFloat] = [4, 4]
+//		apparentPath.setLineDash(dashes, count: dashes.count, phase: 0.0)
+//		apparentPath.lineCapStyle = .round
+//		apparentPath.lineJoinStyle = .round
+//		UIColor.blue.set()
+//		apparentPath.stroke()
+		
+		for poi in pointsOfInterest {
+			let point = poi.point
+			
+			let circlePath = UIBezierPath(
+				arcCenter: point,
+				radius: 6,
+				startAngle: CGFloat(0),
+				endAngle: CGFloat(Double.pi * 2),
+				clockwise: true)
+			
+			UIColor.yellow.setFill()
+			UIColor.red.setStroke()
+			circlePath.fill()
+			circlePath.stroke()
+			
+			let textPoint = CGPoint(x: point.x, y: point.y - 6)
+			
+			draw(text: poi.label, at: textPoint)
+		}
+	}
+	
+	func draw(text: String, at: CGPoint) {
+		let paragraphStyle = NSMutableParagraphStyle()
+		paragraphStyle.alignment = .center
+		
+		let attributes = [
+			NSAttributedString.Key.paragraphStyle: paragraphStyle,
+			NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0),
+			NSAttributedString.Key.foregroundColor: UIColor.black
+		]
+		
+		let attributedString = NSAttributedString(string: text, attributes: attributes)
+		
+		let size = attributedString.size()
+		
+		let x = at.x - (size.width / 2)
+		
+		let stringRect = CGRect(x: x, y: at.y - size.height, width: size.width, height: size.height)
+		attributedString.draw(in: stringRect)
 	}
 
 }

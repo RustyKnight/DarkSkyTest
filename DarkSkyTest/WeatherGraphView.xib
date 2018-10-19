@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,88 +15,95 @@
             <rect key="frame" x="0.0" y="0.0" width="2154" height="425"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9GL-GX-joE">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-gc-qmg" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="74" width="2154" height="351"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TempatureGraphView"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9GL-GX-joE">
                     <rect key="frame" x="0.0" y="0.0" width="2154" height="50"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DvZ-cw-ORV" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-Gs-6LM" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="179.5" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="180" y="0.0" width="175.5" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Zs-C4-gxY" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="359" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="359.5" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwB-Z0-V23" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="538.5" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="539.5" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmw-WS-WPL" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="718" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="719.5" y="0.0" width="175.5" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTx-31-Yyd" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="897.5" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="899" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWE-x3-4FG" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="1077" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="1079" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wn-xP-af5" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="1256.5" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="1259" y="0.0" width="175.5" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dwk-V9-7rR" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="1436" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="1438.5" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVn-7b-q2O" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="1615.5" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="1618.5" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g28-IL-TtW" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="1795" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="1798.5" y="0.0" width="175.5" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5e-NA-Axj" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                            <rect key="frame" x="1974.5" y="0.0" width="179.5" height="50"/>
+                            <rect key="frame" x="1978" y="0.0" width="176" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="HeaderView"/>
@@ -104,19 +111,68 @@
                         </view>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWi-gc-qmg" customClass="XibView" customModule="DarkSkyTest" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="50" width="2154" height="375"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TempatureGraphView"/>
-                    </userDefinedRuntimeAttributes>
-                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MKx-cw-8IT">
+                    <rect key="frame" x="0.0" y="0.0" width="2154" height="425"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeL-zW-IM5">
+                            <rect key="frame" x="0.0" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lgl-1p-iy3">
+                            <rect key="frame" x="180" y="0.0" width="172.5" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VlQ-VA-Lj1">
+                            <rect key="frame" x="360.5" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IcG-V6-ddm">
+                            <rect key="frame" x="540.5" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yp0-NB-eGx">
+                            <rect key="frame" x="720.5" y="0.0" width="172.5" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Gp-6P-FQL">
+                            <rect key="frame" x="901" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orA-Mq-7QL">
+                            <rect key="frame" x="1081" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0SR-Ux-9Pe">
+                            <rect key="frame" x="1261" y="0.0" width="172.5" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vez-Ge-kjS">
+                            <rect key="frame" x="1441.5" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCq-5q-0gd">
+                            <rect key="frame" x="1621.5" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2d-mB-xqY">
+                            <rect key="frame" x="1801.5" y="0.0" width="172.5" height="425"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="den-uG-tfo">
+                            <rect key="frame" x="1982" y="0.0" width="172" height="425"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="MKx-cw-8IT" secondAttribute="trailing" id="AtD-8a-XRj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MKx-cw-8IT" secondAttribute="bottom" id="JhC-ay-xqC"/>
                 <constraint firstItem="oWi-gc-qmg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LzA-Px-5mr"/>
+                <constraint firstItem="MKx-cw-8IT" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="NSm-6q-i9S"/>
                 <constraint firstItem="oWi-gc-qmg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QFw-Ux-PJP"/>
-                <constraint firstItem="oWi-gc-qmg" firstAttribute="top" secondItem="9GL-GX-joE" secondAttribute="bottom" id="TZz-2h-jpI"/>
+                <constraint firstItem="oWi-gc-qmg" firstAttribute="top" secondItem="9GL-GX-joE" secondAttribute="bottom" constant="24" id="TZz-2h-jpI"/>
                 <constraint firstItem="9GL-GX-joE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="TcN-fc-6sA"/>
                 <constraint firstAttribute="trailing" secondItem="9GL-GX-joE" secondAttribute="trailing" id="Zor-iq-pB3"/>
                 <constraint firstItem="9GL-GX-joE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="aLZ-bb-YFQ"/>
@@ -124,6 +180,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oWi-gc-qmg" secondAttribute="bottom" id="mGU-Hw-cUi"/>
                 <constraint firstItem="oWi-gc-qmg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="r13-nq-irg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oWi-gc-qmg" secondAttribute="trailing" id="s93-cu-m1u"/>
+                <constraint firstItem="MKx-cw-8IT" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xC5-Vk-L70"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -143,6 +200,17 @@
                 <outlet property="nib11" destination="g28-IL-TtW" id="IWP-nr-PqF"/>
                 <outlet property="nib12" destination="e5e-NA-Axj" id="nCL-Ua-dAL"/>
                 <outlet property="nibTempatureGraphView" destination="oWi-gc-qmg" id="DUd-PQ-GXl"/>
+                <outletCollection property="frames" destination="CeL-zW-IM5" collectionClass="NSMutableArray" id="9FI-LI-ylW"/>
+                <outletCollection property="frames" destination="Lgl-1p-iy3" collectionClass="NSMutableArray" id="ppr-MO-RxB"/>
+                <outletCollection property="frames" destination="VlQ-VA-Lj1" collectionClass="NSMutableArray" id="n7c-BV-5G6"/>
+                <outletCollection property="frames" destination="IcG-V6-ddm" collectionClass="NSMutableArray" id="rU9-rB-JEr"/>
+                <outletCollection property="frames" destination="Yp0-NB-eGx" collectionClass="NSMutableArray" id="QWY-rh-iMB"/>
+                <outletCollection property="frames" destination="4Gp-6P-FQL" collectionClass="NSMutableArray" id="nEM-dn-srC"/>
+                <outletCollection property="frames" destination="orA-Mq-7QL" collectionClass="NSMutableArray" id="D83-MJ-wDz"/>
+                <outletCollection property="frames" destination="0SR-Ux-9Pe" collectionClass="NSMutableArray" id="zwv-aK-Mnz"/>
+                <outletCollection property="frames" destination="Vez-Ge-kjS" collectionClass="NSMutableArray" id="02h-aq-pCH"/>
+                <outletCollection property="frames" destination="NCq-5q-0gd" collectionClass="NSMutableArray" id="JwG-OH-45d"/>
+                <outletCollection property="frames" destination="S2d-mB-xqY" collectionClass="NSMutableArray" id="IvX-l6-rBA"/>
             </connections>
             <point key="canvasLocation" x="486.39999999999998" y="-69.715142428785612"/>
         </view>

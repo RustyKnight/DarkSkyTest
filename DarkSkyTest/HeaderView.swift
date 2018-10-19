@@ -69,14 +69,32 @@ enum WindDirection: Double, CustomStringConvertible {
 
 @IBDesignable
 class HeaderView: UIView {
+	
+	@IBOutlet weak var rainProbabilityLabel: UILabel!
+	@IBOutlet weak var rainImageView: UIImageView!
 
-	@IBOutlet weak var windImageView: UIImageView!
+	@IBOutlet weak var uvLabel: UILabel!
+	@IBOutlet weak var uvImageView: UIImageView!
+
+	@IBOutlet weak var visibilityLabel: UILabel!
+	@IBOutlet weak var visibilityImageView: UIImageView!
+
+	@IBOutlet weak var dateLabel: UILabel!
 	
 	@IBOutlet weak var windSpeedLabel: UILabel!
 	@IBOutlet weak var windGustSpeedLabel: UILabel!
 	
 	@IBOutlet weak var windDirectionLabel: UILabel!
 	@IBOutlet weak var windDirectionImageView: UIImageView!
+	
+	@IBOutlet weak var weatherImageView: UIImageView!
+	
+	var dateFormatter: DateFormatter = {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "EEE hh:mm a"
+		
+		return formatter
+	}()
 	
 	var weather: Weather? {
 		didSet {
@@ -95,19 +113,32 @@ class HeaderView: UIView {
 	}
 	
 	func setUp() {
-		windImageView.image = WeatherStyleKit.imageOfWind
+		rainImageView.image = WeatherStyleKit.imageOfRain
+		uvImageView.image = WeatherStyleKit.imageOfClearDay
+		visibilityImageView.image = WeatherStyleKit.imageOfVisibility
+		weatherImageView.image = WeatherStyleKit.imageOfClearDay
 		configure()
 	}
 	
 	func configure() {
+		defer {
+			setNeedsLayout()
+		}
+
 		guard let weather = weather else {
 			windDirectionImageView.image = WeatherStyleKit.imageOfWindDirection()
 			
-			windSpeedLabel.text = "100 kph"
-			windGustSpeedLabel.text = "100 kph"
-			windDirectionLabel.text = "NNE"
+			windSpeedLabel.text = "---"
+			windGustSpeedLabel.text = "---"
+			windDirectionLabel.text = "---"
+			dateLabel.text = "---"
+			
+			rainProbabilityLabel.text = "---"
+			
 			return
 		}
+		
+		dateLabel.text = dateFormatter.string(from: weather.date)
 		
 		windDirectionImageView.image = WeatherStyleKit.imageOfWindDirection(direction: CGFloat(weather.windDirection))
 		
@@ -126,7 +157,33 @@ class HeaderView: UIView {
 		let direction = WindDirection.direction(at: Double(weather.windDirection))
 		
 		windDirectionLabel.text = direction.description
+		
+		uvLabel.text = String(weather.uvIndex)
+		
+		let visibility = Measurement(value: weather.visibility, unit: UnitLength.kilometers)
+		visibilityLabel.text = formatter.string(from: visibility)
+		
+		let probability = weather.chanceOfRain
 
+		let nf = NumberFormatter()
+		nf.numberStyle = .percent
+		
+		rainImageView.image = WeatherStyleKit.imageOfRain
+		rainProbabilityLabel.text = nf.string(for: probability)
+		
+		switch weather.icon {
+		case "clear-day": weatherImageView.image = WeatherStyleKit.imageOfClearDay
+		case "clear-night": weatherImageView.image = WeatherStyleKit.imageOfClearNight
+		case "rain": weatherImageView.image = WeatherStyleKit.imageOfRaining
+		case "snow": weatherImageView.image = WeatherStyleKit.imageOfSnowing
+		case "sleet": weatherImageView.image = WeatherStyleKit.imageOfSleet
+		case "wind": weatherImageView.image = WeatherStyleKit.imageOfWind
+		case "fog": weatherImageView.image = WeatherStyleKit.imageOfFog
+		case "cloudy": fallthrough
+		case "partly-cloudy-day": weatherImageView.image = WeatherStyleKit.imageOfCloudyDay
+		case "partly-cloudy-night": weatherImageView.image = WeatherStyleKit.imageOfCloudyNight
+		default: weatherImageView.image = WeatherStyleKit.imageOfClearDay
+		}
 	}
 	
 }
