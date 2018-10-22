@@ -10,8 +10,6 @@ import UIKit
 
 class TodaysWeatherViewController: UIViewController {
 	
-	@IBOutlet var stackViews: [UIStackView]!
-	
 	@IBOutlet weak var descriptionLabel: UILabel!
 	@IBOutlet weak var currentTempLabel: UILabel!
 	
@@ -50,27 +48,74 @@ class TodaysWeatherViewController: UIViewController {
 			configure()
 		}
 	}
+	
+	var animator: LinearAnimator?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		weatherImageView.image = WeatherStyleKit.imageOfClearDay
+		weatherImageView.image = WeatherStyleKit.imageOfClearDayAnimated()
 		
 		windDirectionImageView.image = WeatherStyleKit.imageOfWindDirection()
-		rainImageView.image = WeatherStyleKit.imageOfRain
-		uvImageView.image = WeatherStyleKit.imageOfClearDay
-		visibilityImageView.image = WeatherStyleKit.imageOfVisibility
+		rainImageView.image = WeatherStyleKit.imageOfRainColored
+		uvImageView.image = WeatherStyleKit.imageOfUVColored
+		visibilityImageView.image = WeatherStyleKit.imageOfVisibilityColored
 		
 		configure()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		animator = LinearAnimator(ticker: { (animator) in
+			self.updateIcon()
+		})
+		animator?.start()
+	}
+	
+	var anchorTime: Date?
+	var duration: TimeInterval = 5.0
+	
+	func updateIcon() {
+		guard let model = model else {
+			windDirectionImageView.image = WeatherStyleKit.imageOfWindDirection()
+			return
+		}
+		if anchorTime == nil {
+			anchorTime = Date()
+		}
+		var runningTime = Date().timeIntervalSince(anchorTime!)
+		if runningTime >= duration {
+			anchorTime = Date()
+			runningTime = duration
+		}
+		let progress = runningTime / duration
+		
+		switch model.current.icon {
+		case "clear-day":
+			weatherImageView.image = WeatherStyleKit.imageOfClearDayAnimated(animationProgress: CGFloat(progress))
+		case "clear-night":
+			weatherImageView.image = WeatherStyleKit.imageOfClearNightAnimated(animationProgress: CGFloat(progress))
+		case "rain":
+			weatherImageView.image = WeatherStyleKit.imageOfRainingAnimated
+		case "snow":
+			weatherImageView.image = WeatherStyleKit.imageOfSnowingAnimated
+		case "sleet":
+			weatherImageView.image = WeatherStyleKit.imageOfSleetAnimated
+		case "wind":
+			weatherImageView.image = WeatherStyleKit.imageOfWindyAnimated(animationProgress: CGFloat(progress))
+		case "fog":
+			weatherImageView.image = WeatherStyleKit.imageOfFogAnimated(animationProgress: CGFloat(progress))
+		case "cloudy": fallthrough
+		case "partly-cloudy-day": weatherImageView.image = WeatherStyleKit.imageOfCloudyDayAnimated(animationProgress: CGFloat(progress))
+		case "partly-cloudy-night": weatherImageView.image = WeatherStyleKit.imageOfCloudyNightAnimated(animationProgress: CGFloat(progress))
+		default:
+			weatherImageView.image = WeatherStyleKit.imageOfClearDayAnimated(animationProgress: CGFloat(progress))
+		}
+	}
+	
 	func configure() {
 		defer {
-			for stackView in stackViews {
-				stackView.invalidateIntrinsicContentSize()
-				stackView.setNeedsLayout()
-			}
-			
 			view.setNeedsLayout()
 			view.layoutIfNeeded()
 		}
@@ -82,22 +127,10 @@ class TodaysWeatherViewController: UIViewController {
 			windDirectionLabel.text = "---"
 			rainLabel.text = "---"
 			uvLabel.text = "---"
+			uvLabel.backgroundColor = UIColor.clear
 			visibilityLabel.text = "---"
-			weatherImageView.image = WeatherStyleKit.imageOfClearDay
+			weatherImageView.image = WeatherStyleKit.imageOfClearDayAnimated()
 			return
-		}
-		switch model.current.icon {
-		case "clear-day": weatherImageView.image = WeatherStyleKit.imageOfClearDay
-		case "clear-night": weatherImageView.image = WeatherStyleKit.imageOfClearNight
-		case "rain": weatherImageView.image = WeatherStyleKit.imageOfRaining
-		case "snow": weatherImageView.image = WeatherStyleKit.imageOfSnowing
-		case "sleet": weatherImageView.image = WeatherStyleKit.imageOfSleet
-		case "wind": weatherImageView.image = WeatherStyleKit.imageOfWind
-		case "fog": weatherImageView.image = WeatherStyleKit.imageOfFog
-		case "cloudy": fallthrough
-		case "partly-cloudy-day": weatherImageView.image = WeatherStyleKit.imageOfCloudyDay
-		case "partly-cloudy-night": weatherImageView.image = WeatherStyleKit.imageOfCloudyNight
-		default: weatherImageView.image = WeatherStyleKit.imageOfClearDay
 		}
 		
 		descriptionLabel.text = model.current.description
@@ -118,6 +151,19 @@ class TodaysWeatherViewController: UIViewController {
 
 	func configureUV(_ model: Model) {
 		uvLabel.text = String(model.today.uvIndex)
+		
+		switch model.today.uvIndex {
+		case 0..<3:
+			uvLabel.text = "Low"
+		case 3..<6:
+			uvLabel.text = "Moderate"
+		case 6..<8:
+			uvLabel.text = "High"
+		case 8..<11:
+			uvLabel.text = "Very high"
+		default:
+			uvLabel.text = "Very extreme"
+		}
 	}
 
 	func configureRain(_ model: Model) {

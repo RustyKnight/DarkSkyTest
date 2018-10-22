@@ -28,6 +28,7 @@ class ViewController: UIViewController {
 				return
 			}
 			todaysWeatherViewController = vc
+			vc.view.translatesAutoresizingMaskIntoConstraints = false
 		}
 	}
 
@@ -63,8 +64,10 @@ class ViewController: UIViewController {
 			case .failure(let error):
 				print(error)
 			}
+			
 		}
 
+		todaysWeatherViewController.view.addBorders(edges: .bottom, color: UIColor(red: 0, green: 0, blue: 0, alpha: 0.05))
 
 //
 //		var forcast = [ChartDataEntry]()
